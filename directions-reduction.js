@@ -29,3 +29,4 @@ function dirReduc(arr){
   
   return arr;
 }
+
