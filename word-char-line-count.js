@@ -12,7 +12,7 @@ DocumentParser.prototype.reset = function() {
 }
 
 DocumentParser.prototype.parse = function() {
-  var completeText = "";
+  var completeText = '';
   var currentText = this.reader.getChunk();
   
   while(currentText !== "") {
@@ -25,4 +25,3 @@ DocumentParser.prototype.parse = function() {
   this.charCount = completeText.replace('\n', '').length;
   this.lineCount = completeText.length === 0 ? 0 : completeText.split('\n').length;
 }
-
