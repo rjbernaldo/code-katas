@@ -21,7 +21,11 @@ DocumentParser.prototype.parse = function() {
     currentText = this.reader.getChunk();
   }
   
-  this.wordCount = completeText.length === 0 || completeText === ' ' ? 0 : completeText.split(' ').length;
-  this.charCount = completeText.replace('\n', '').length;
-  this.lineCount = completeText.length === 0 ? 0 : completeText.split('\n').length;
+  var wordCount = completeText.length === 0 || completeText === ' ' ? 0 : completeText.split(' ').length;
+  var completeText = completeText.replace('\n', '').length;
+  var lineCount = completeText.length === 0 ? 0 : completeText.split('\n').length;
+
+  this.wordCount = wordCount;
+  this.charCount = charCount;
+  this.lineCount = lineCount;
 }
