@@ -30,5 +30,19 @@ describe StringCalculator do
         expect(@sc.add '1,2,3,4,5').to eq(15)
       end
     end
+
+    context 'when other delimiters are used' do
+      it 'should be able to support newlines' do
+        expect(@sc.add '1\n2').to eq(3)
+      end
+
+      it 'should be able to support both newlines and commas' do
+        expect(@sc.add '1\n2,3\n4,5').to eq(15)
+      end
+
+      it 'should be able to support custom delimiters' do
+        expect(@sc.add '//*\n1*2').to eq(3)
+      end
+    end
   end
 end
