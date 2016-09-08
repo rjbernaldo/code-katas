@@ -43,6 +43,28 @@ describe StringCalculator do
       it 'should be able to support custom delimiters' do
         expect(@sc.add '//*\n1*2').to eq(3)
       end
+
+      it 'should be able to support all types of delimiters' do
+        expect(@sc.add '//*\n1*2,3,4\n5').to eq(15)
+      end
+    end
+    
+    context 'when a digit is bigger than 1000' do
+      it 'should be ignored' do
+        expect(@sc.add '5,1001').to eq(5)
+      end
+    end
+
+    context 'delimiters with any length' do
+      it 'should be supported' do
+        expect(@sc.add '//[---]\n1---2').to eq(3)
+      end
+    end
+
+    context 'multiple delimiters' do
+      it 'should be suppored' do
+        expect(@sc.add '//[-][+][z]\n1-2+3z4').to eq(10)
+      end
     end
   end
 end
