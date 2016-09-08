@@ -13,10 +13,11 @@ class StringCalculator
     end
 
     if str.index('//') == 0
-      custom_delimiter = decoded_str.shift.split('//')[1].gsub(/\[|\]/, '')
-      #decoded_str = decoded_str[0]
-      #TODO: support multiple custom delimiters
-      delimiters.push(custom_delimiter)
+      custom_delimiters = decoded_str.shift.split('//')[1]
+      custom_delimiters = custom_delimiters.split(']')
+      custom_delimiters.map { |d| d.sub!(/\[/, '') }
+
+      delimiters.concat(custom_delimiters)
     end
 
     decoded_str = decoded_str.join(primary_delimiter)
